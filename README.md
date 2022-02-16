@@ -37,3 +37,19 @@ sudo apt git
 - [stackoverflowpost](https://askubuntu.com/questions/625540/suddenly-cant-run-sudo)
 - Don't worry, you didn't mess up the entire permissions structure of the
   device, you probably just installed classic not as devmode. 
+
+### SSH stuff
+
+Adding a new ssh key to existing device. On your workstation run:
+
+```
+ssh-add ~/.ssh/path_to_existing_key
+ssh-copy-id -f -i /path/to/public/key username@ip_address
+```
+
+Getting the host fingerprint. First ssh into the host. Then:
+
+```
+grep -n ssh_host /etc/ssh/sshd_config
+ssh-keygen -l -f /etc/ssh/ssh_host_{rsa,ecdsa,ed25519}_key
+```
