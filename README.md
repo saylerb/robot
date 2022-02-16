@@ -21,3 +21,19 @@ Instructions
 snap install classic --edge --devmode
 ```
 
+```
+sudo classic
+```
+
+```
+sudo apt update
+sudo apt git
+```
+
+### Troubleshooting
+
+- sudo: effective uid is not 0, is /usr/bin/sudo on a file system with the
+  'nosuid' option set or an NFS file system without root privileges?
+- [stackoverflowpost](https://askubuntu.com/questions/625540/suddenly-cant-run-sudo)
+- Don't worry, you didn't mess up the entire permissions structure of the
+  device, you probably just installed classic not as devmode. 
