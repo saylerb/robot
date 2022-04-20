@@ -30,13 +30,52 @@ sudo apt update
 sudo apt git
 ```
 
+### Using a Lima VM for local development
+
+The default lima VM is an Ubuntu Server VM. This is slightly different
+than Ubuntu Core but offers similar functionality.
+
+
+```
+limactl start default
+```
+
+Edit the lima configuration file to use Focal Fossa (Ubuntu 20.04) instead of
+the most recent version, since the ROS release we will be using targets focal.
+
+```
+images:
+# Try to use release-yyyyMMdd image if available. Note that release-yyyyMMdd will be removed after several months.
+- location: "https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-amd64.img"
+  arch: "x86_64"
+  digest: "sha256:6e3ce31fe3a5523023650ba988c12d5fc2544bd0a95f435474841e2dec5836d9"
+- location: "https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-arm64.img"
+  arch: "aarch64"
+  digest: "sha256:ccc11e625acd878095f2eaa15541f4f788789ea964e3226b2511072b6718d455"
+# Fallback to the latest release image.
+# Hint: run `limactl prune` to invalidate the cache
+- location: "https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-amd64.img"
+  arch: "x86_64"
+- location: "https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-arm64.img"
+  arch: "aarch64"
+
+
+
+```
+
+Install python dependencies
+```
+./install-dev-environment.sh
+```
+
+
 ### Troubleshooting
 
 - sudo: effective uid is not 0, is /usr/bin/sudo on a file system with the
   'nosuid' option set or an NFS file system without root privileges?
 - [stackoverflowpost](https://askubuntu.com/questions/625540/suddenly-cant-run-sudo)
 - Don't worry, you didn't mess up the entire permissions structure of the
-  device, you probably just installed classic not as devmode. 
+  device, you probably just installed classic not as devmode.
 
 ### SSH stuff
 
