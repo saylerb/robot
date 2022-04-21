@@ -35,3 +35,8 @@ git config --global user.email saylerb@users.noreply.github.com
 # Initialize rosdep
 sudo rosdep init || true
 rosdep update
+
+# Build and source setup
+catkin_make --directory catkin_ws/
+
+. catkin_ws/devel/setup.bash
