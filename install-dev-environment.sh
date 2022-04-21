@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 sudo apt install -y gcc python3-venv python3-dev python3-pip python3-setuptools
 pip3 install RPi.GPIO
@@ -33,5 +33,5 @@ git config --global core.editor /usr/bin/vim
 git config --global user.email saylerb@users.noreply.github.com
 
 # Initialize rosdep
-sudo rosdep init
+sudo rosdep init || true
 rosdep update
