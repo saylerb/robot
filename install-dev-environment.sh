@@ -13,4 +13,8 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 
 sudo apt update
 
+# Minimal install
 sudo apt install -y ros-noetic-ros-base
+
+# Install packages to create and manage your own ROS workspaces
+sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
