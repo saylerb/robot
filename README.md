@@ -60,14 +60,11 @@ images:
   arch: "aarch64"
 
 
-
+```bash
+Install python dependencies and setup ROS environment
 ```
-
-Install python dependencies
+source ./install-dev-environment.sh
 ```
-./install-dev-environment.sh
-```
-
 
 ### Troubleshooting
 
