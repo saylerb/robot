@@ -31,3 +31,7 @@ grep -qxF "$command_for_sourcing" ~/.bashrc || echo "$command_for_sourcing" >> ~
 git config --global user.name "Brian Sayler"
 git config --global core.editor /usr/bin/vim
 git config --global user.email saylerb@users.noreply.github.com
+
+# Initialize rosdep
+sudo rosdep init
+rosdep update
