@@ -18,3 +18,9 @@ sudo apt install -y ros-noetic-ros-base
 
 # Install packages to create and manage your own ROS workspaces
 sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+# Setup ROS environment for every new shell
+command_for_sourcing="source /opt/ros/noetic/setup.bash"
+
+grep -qxF "$command_for_sourcing" ~/.bashrc || echo "$command_for_sourcing" >> ~/.bashrc
+
+. /opt/ros/noetic/setup.bash
