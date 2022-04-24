@@ -5,6 +5,9 @@
 `Ed25519` keys are not supported by Ubuntu SSO currently. Generate an SSH key:
 
 ```
+```
+
+```bash
 ssh-keygen -t rsa -b 4096 -f id_rsa_ubuntu -C $YOUR_COMMENT_HERE
 ```
 
@@ -13,30 +16,36 @@ ssh-keygen -t rsa -b 4096 -f id_rsa_ubuntu -C $YOUR_COMMENT_HERE
 Instructions
 [https://ubuntu.com/tutorials/how-to-install-ubuntu-core-on-raspberry-pi](https://ubuntu.com/tutorials/how-to-install-ubuntu-core-on-raspberry-pi)
 
-### Classic environment on device
+## Classic environment on device
 
 [Developing on device development](https://web.archive.org/web/20190421235427/https://developer.ubuntu.com/core/get-started/developer-setup)
 
-```
+```bash
 snap install classic --edge --devmode
 ```
 
-```
+```bash
 sudo classic
 ```
 
-```
+```bash
 sudo apt update
 sudo apt git
 ```
+### Troubleshooting classic Ubuntu running on Ubuntu Core
 
-### Using a Lima VM for local development
+- sudo: effective uid is not 0, is /usr/bin/sudo on a file system with the
+  'nosuid' option set or an NFS file system without root privileges?
+- [stackoverflowpost](https://askubuntu.com/questions/625540/suddenly-cant-run-sudo)
+- Don't worry, you didn't mess up the entire permissions structure of the
+  device, you probably just installed classic not as devmode.
+
+## Using a Lima VM for local development (if you must)
 
 The default lima VM is an Ubuntu Server VM. This is slightly different
 than Ubuntu Core but offers similar functionality.
 
-
-```
+```bash
 limactl start default
 ```
 
@@ -58,21 +67,18 @@ images:
   arch: "x86_64"
 - location: "https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-arm64.img"
   arch: "aarch64"
-
-
-```bash
-Install python dependencies and setup ROS environment
 ```
+
+Install python dependencies and setup ROS environment
+```bash
 source ./install-dev-environment.sh
 ```
 
-### Troubleshooting
+### Building catkin packages
 
-- sudo: effective uid is not 0, is /usr/bin/sudo on a file system with the
-  'nosuid' option set or an NFS file system without root privileges?
-- [stackoverflowpost](https://askubuntu.com/questions/625540/suddenly-cant-run-sudo)
-- Don't worry, you didn't mess up the entire permissions structure of the
-  device, you probably just installed classic not as devmode.
+Inside the catkin workspace:
+
+`catkin_make`
 
 ### SSH stuff
 
