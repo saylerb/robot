@@ -1,6 +1,8 @@
 #!/bin/bash
 
-set -ex
+set -e
+
+DISTRO=noetic
 
 sudo apt install -y gcc python3-venv python3-dev python3-pip python3-setuptools
 pip3 install RPi.GPIO
@@ -14,13 +16,13 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 sudo apt update
 
 # Minimal install
-sudo apt install -y ros-noetic-ros-base
+sudo apt install -y ros-$DISTRO-ros-base
 
 # Install packages to create and manage your own ROS workspaces
 sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 
 # Setup ROS environment for every new shell
-command_for_sourcing="source /opt/ros/noetic/setup.bash"
+command_for_sourcing="source /opt/ros/$DISTRO/setup.bash"
 
 grep -qxF "$command_for_sourcing" ~/.bashrc || echo "$command_for_sourcing" >> ~/.bashrc
 
@@ -40,3 +42,12 @@ rosdep update
 catkin_make --directory catkin_ws/
 
 . catkin_ws/devel/setup.bash
+
+# Install tutorial
+sudo apt-get install -y ros-$DISTRO-ros-tutorials
+
+# Install Turlestuff (TODO)
+
+## Install
+sudo apt-get install ros-$DISTRO-rqt
+sudo apt-get install ros-$DISTRO-rqt-common-plugins
